@@ -1,0 +1,28 @@
+ -*- coding: utf-8 -*-
+"""
+Created on Sun Feb 23 15:48:58 2020
+
+@author: Theodore Wattimena
+"""
+
+from scipy.stats import norm
+print('Question 1')
+xVal1 = 1
+xVal2 = norm.cdf(110,100,5)
+print(xVal2)
+
+print('The probability is',(xVal1 - xVal2)*100,'%')
+
+print('Question 2')
+xval1 = 1
+xval2 = norm.cdf(18,16,2)
+
+print('The probability is',(xval1 - xval2)*100,'%')
+
+print('Question 3')
+xval = norm.ppf(0.02, loc = 4000, scale = 200)
+print(xval,'hrs')
+
+print('Question 4')
+xval3 = norm.ppf(0.03,loc = 10, scale = 2)
+print(xval3,'years')
