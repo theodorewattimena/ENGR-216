@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Feb  9 18:58:13 2020
+
+@author: Theodore Wattimena
+"""
+import matplotlib.pyplot as plt
+x1 = 0.5 
+der = (-0.4*x1**3)-(0.45*x1**2)-(x1)-0.25
+deltax = []
+pop_gradient = []
+a = 5
+while a >=(0.0098):
+    x2 = a + x1
+    fx1 = (-0.1*x1**4)-(0.15*x1**3)-(0.5*x1**2)-(0.25*x1)+1.2
+    fx2 = (-0.1*x2**4)-(0.15*x2**3)-(0.5*x2**2)-(0.25*x2)+1.2
+    deltax.append(a)
+    pop_gradient.append((fx1-fx2)/(x1-x2))
+    a/=2
+    a=round(a,4)
+estimate = []
+for i in pop_gradient:
+    b = (abs((i-der)/der))*100
+    estimate.append(b)
+plt.plot(deltax,estimate)
