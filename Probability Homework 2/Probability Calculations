@@ -1,0 +1,18 @@
+ -*- coding: utf-8 -*-
+"""
+Created on Sun Mar  1 16:21:09 2020
+
+@author: Theodore Wattimena
+"""
+import statistics
+
+#Question 3
+with open('CIData.txt') as f:
+  CIData = f.readlines()
+  data = [line.rstrip('\n') for line in open('CIData.txt')]
+  data1 = []
+  for item in data:
+      data1.append(float(item))
+meandata = statistics.mean(data1)
+print(meandata)
+print(len(data1))
