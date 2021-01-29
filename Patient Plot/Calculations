@@ -1,0 +1,75 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Feb 15 16:41:37 2020
+
+@author: Theodore Wattimena
+"""
+import statistics as stats
+import csv
+import numpy as np
+import matplotlib.pyplot as plt
+
+with open('PatientTemperature_csv.csv') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter = ',')
+    line_count = 0
+    sampleNo = []
+    temperature = []
+    age = []
+    for row in csv_reader:
+            sampleNo.append(row[0])
+            temperature.append(float(row[0]))
+            age.append(float(row[1]))
+
+#TEMPERATURE   
+print('The results for temperature are as follows:')
+tempmean = stats.mean(temperature)
+print('The mean Temperature is',tempmean)
+temperature.sort()  
+mediantemperature = stats.median(temperature)    
+print("Median of temperature is",mediantemperature)
+modetemp = stats.mode(temperature)
+print('The mode of temperature is',modetemp)
+stdtemp = stats.stdev(temperature)
+print('The standard deviation of temperature is',stdtemp)
+variancetemp = stats.pvariance(temperature)
+print('The variance of temperature is',variancetemp)
+
+print('')
+#AGE
+print('The results for age are as follows:')
+agemean = stats.mean(age)
+print('The mean age is',agemean)
+age.sort()  
+medianage = stats.median(age)
+print("Median of age is",medianage)
+stdage = stats.stdev(age)
+print('The standard deviation of temperature is',stdage)
+varianceage = stats.pvariance(age)
+print('The variance of age is',varianceage)
+
+#Probability
+i=0
+hightemp = []
+for i in range (len(temperature)):
+    if temperature[i]>=97 and temperature[i]<=98:
+        hightemp.append(i)
+probabilitytemp = (len(hightemp))/(len(temperature))*100
+print('The probabiltiy is',probabilitytemp,'%')
+
+with open('PatientTemperature_csv.csv') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter = ',')
+    line_count = 0
+    sampleNo = []
+    temperature = []
+    age = []
+    for row in csv_reader:
+            sampleNo.append(row[0])
+            temperature.append(float(row[0]))
+            age.append(float(row[1]))
+        
+nptemperature = np.asarray(temperature)
+n = plt.hist(x=nptemperature)
+plt.xlabel('Temperature')
+plt.ylabel('Frequency')
+plt.title('Temperature Plot')
+plt.show()
